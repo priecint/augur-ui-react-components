@@ -228,7 +228,7 @@ function makeMarkets(numMarkets = 25) {
 						if (typeof limitPrice !== 'undefined') {
 							outcome.trade.limitPrice = limitPrice;
 						}
-						outcome.trade.totalCost = makeNumber(Math.round(shares * limitPrice * -100) / 100);
+						outcome.trade.totalCost = makeNumber(Math.abs(Math.round(outcome.trade.numShares * outcome.trade.limitPrice * 100)) / -100);
 						require('../selectors').update();
 					}
 				};
