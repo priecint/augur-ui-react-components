@@ -7,10 +7,8 @@
 
 	.order-book {
 		flex: 2;
-		display: inline-block;
 		min-width: 33.5em;
-		margin: 0.25rem;
-		padding: 2rem;
+		margin: 1rem 0.25rem;
 		background: white;
 		border-radius: 1px;
 		border: 1px solid @color-border;
@@ -45,8 +43,8 @@
 		}
 
 		.bids {
+			background: lightgreen;
 			display: inline-block;
-			padding-right: 2em;
 			vertical-align: top;
 			text-align: right;
 			border-right: 1px solid @color-border;
@@ -64,9 +62,9 @@
 		}
 
 		.asks {
+			background: pink;
 			display: inline-block;
 			min-width: 8em;
-			padding-left: 2em;
 			vertical-align: top;
 			text-align: left;
 			border-left: 1px solid @color-border;
@@ -85,6 +83,7 @@
 
 		.bid-ask {
 			min-width: 13em;
+			padding: 3px 5px;
 		}
 	}
 }
