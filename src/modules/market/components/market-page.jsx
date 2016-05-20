@@ -7,15 +7,16 @@ import Basics from '../../market/components/basics';
 import TradePanel from '../../trade/components/trade-panel';
 import ReportPanel from '../../reports/components/report-panel';
 import MarketPositions from '../../market/components/market-positions';
+import OrderBooks from '../../order-book/components/order-books';
 
-module.exports = React.createClass({
-    propTypes: {
-        className: React.PropTypes.string,
-        siteHeader: React.PropTypes.object,
+var MarketPage = React.createClass({
+	propTypes: {
+		className: React.PropTypes.string,
+		siteHeader: React.PropTypes.object,
 		market: React.PropTypes.object,
 		priceTimeSeries: React.PropTypes.array,
 		numPendingReports: React.PropTypes.number
-    },
+	},
 
 	shouldComponentUpdate: shouldComponentUpdatePure,
 
@@ -50,37 +51,46 @@ module.exports = React.createClass({
 			// trade panel
 			else if (p.market.isOpen) {
 				nodes.push(
-			        <TradePanel
-			        	key="trade-panel"
-			            { ...p.market }
-			            { ...p.market.tradeSummary } />
+					<TradePanel
+						key="trade-panel"
+						{ ...p.market }
+						{ ...p.market.tradeSummary } />
+				);
+
+				nodes.push(
+					<OrderBooks
+						key="order-books"
+						market={p.market}
+					/>
 				);
 
 				// positions
 				if (p.market.positionsSummary && p.market.positionsSummary.numPositions && p.market.positionsSummary.numPositions.value) {
 					nodes.push(
-						<MarketPositions
-							key="market-positions"
-							className="market-positions"
-							positionsSummary={ p.market.positionsSummary }
-							positionOutcomes={ p.market.positionOutcomes }
-							/>
-					);
-				}
-			}
-		}
+                        <MarketPositions
+                            key="market-positions"
+                            className="market-positions"
+                            positionsSummary={ p.market.positionsSummary }
+                            positionOutcomes={ p.market.positionOutcomes }
+                        />
+                    );
+                }
+            }
+        }
 
-		return (
-			<main className="page market">
-				<SiteHeader { ...p.siteHeader } />
-				<article className="page-content">
-					<div className="l-container">
-						{ nodes }
-					</div>
-				</article>
+        return (
+            <main className="page market">
+                <SiteHeader { ...p.siteHeader } />
+                <article className="page-content">
+                    <div className="l-container">
+                        { nodes }
+                    </div>
+                </article>
 
-				<SiteFooter />
-			</main>
-		);
-	}
+                <SiteFooter />
+            </main>
+        );
+    }
 });
+
+module.exports = MarketPage;
