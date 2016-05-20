@@ -55,7 +55,7 @@ let TradePanelItem = React.createClass({
                     onChange={ (value) => p.updateTradeOrder(p.id, undefined, parseFloat(value) || 0) } />
 
                 <ValueDenomination className="fee-to-pay" { ...p.feeToPay } />
-                <ValueDenomination className="total-cost" { ...p.totalCost } />
+                <ValueDenomination className="total-cost" { ...p.profitLoss } />
             </div>
         );
     }

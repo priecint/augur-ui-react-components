@@ -23,7 +23,7 @@ module.exports = React.createClass({
 						<span className="num-shares">Shares</span>
 						<span className="limit-price">Limit</span>
 						<span className="fee-to-pay">Fee</span>
-						<span className="total-cost">Cost</span>
+						<span className="total-cost">Profit/Loss</span>
 					</div>
 					{ p.outcomes && p.outcomes.map(outcome => (
 						<TradePanelItem
